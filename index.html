@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ko" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>루비컴퍼니 | Rubi Company — The Pursuit of Aesthetics</title>
+<meta name="description" content="루비컴퍼니는 해외 프리미엄 사이클링 & 라이프스타일 브랜드를 발굴하여 국내 시장에 공급하는 전문 수입유통 회사입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/webfontworld/score/SCoreDream.css">
+<style>
+  :root{
+    --ink:#1A1B1E;
+    --steel:#5C6066;
+    --line:#DCDEDF;
+    --paper:#F6F6F4;
+    --panel:#FFFFFF;
+    --ruby:#9E1B32;
+    --ruby-deep:#6E1122;
+    --silver:#C9CCD1;
+    --max:1200px;
+    --font-kr:"SCoreDream","S-CoreDream",-apple-system,sans-serif;
+    --font-en:"SCoreDream","S-CoreDream",-apple-system,sans-serif;
+    --font-serif:"Cormorant",serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-kr);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.7;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  .en{font-family:var(--font-en)}
+  .eyebrow{
+    font-family:var(--font-en);
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ruby);font-weight:600;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--ruby)}
+  :focus-visible{outline:2px solid var(--ruby);outline-offset:3px}
+
+  /* ---------- i18n ---------- */
+  .i18n-en{display:none}
+  body.lang-en .i18n-ko{display:none}
+  body.lang-en .i18n-en{display:inline}
+  body.lang-en p.i18n-en, body.lang-en div.i18n-en, body.lang-en h4.i18n-en{display:block}
+  p.i18n-en, div.i18n-en, h4.i18n-en{display:none}
+
+  .lang-toggle{
+    display:flex;align-items:center;gap:2px;
+    border:1px solid var(--line);border-radius:2px;overflow:hidden;
+    font-family:var(--font-en);font-size:11.5px;font-weight:600;letter-spacing:.08em;
+  }
+  .lang-toggle button{
+    all:unset;cursor:pointer;padding:6px 12px;color:var(--steel);
+    transition:all .15s;
+  }
+  .lang-toggle button:hover{color:var(--ruby)}
+  .lang-toggle button.active{background:var(--ink);color:#fff}
+  .lang-toggle button:focus-visible{outline:2px solid var(--ruby);outline-offset:-2px}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,246,244,.88);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+  .logo{font-family:var(--font-en);font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+  .logo-img{height:26px;width:auto;display:block}
+  .logo-fallback{display:none;align-items:center;gap:10px}
+  .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--ruby);display:inline-block}
+  .nav-links{display:flex;gap:34px;font-size:13.5px;font-weight:500;color:var(--steel)}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--ruby)}
+  .nav-right{display:flex;align-items:center;gap:16px}
+  .nav-cta{
+    font-size:13px;font-weight:600;color:#fff;background:var(--ink);
+    padding:9px 20px;border-radius:2px;transition:background .2s;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--ruby)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;padding:14px 30px;border-radius:2px;
+    font-size:14px;font-weight:600;letter-spacing:.02em;transition:all .2s;
+  }
+  .btn-primary{background:var(--ruby);color:#fff}
+  .btn-primary:hover{background:var(--ruby-deep)}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ruby);color:var(--ruby)}
+  .btn-ghost-light{border:1px solid rgba(255,255,255,.6);color:#fff}
+  .btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .btn-white{background:#fff;color:var(--ink)}
+  .btn-white:hover{background:var(--paper)}
+
+  /* ---------- hero slider (풀 배경 이미지) ---------- */
+  .slider{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .slides{display:flex;transition:transform .65s cubic-bezier(.22,.61,.36,1)}
+  .slide{
+    min-width:100%;flex-shrink:0;position:relative;
+    min-height:clamp(430px,56vh,560px);
+    display:flex;align-items:center;
+    background-size:cover;background-position:center;
+    color:#fff;
+  }
+  /* 가독성용 오버레이: 좌측 어둡게 → 우측 밝게 */
+  .slide::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(12,12,14,.74) 0%,rgba(12,12,14,.46) 48%,rgba(12,12,14,.14) 100%);
+  }
+  .slide .wrap{position:relative;z-index:1;width:100%}
+  .slide-copy{max-width:540px;padding:52px 0 64px}
+  .slide h1{
+    font-family:var(--font-en);
+    font-size:clamp(30px,4vw,50px);
+    line-height:1.1;letter-spacing:-.02em;font-weight:700;color:#fff;
+  }
+  .slide h1 .serif{
+    font-family:var(--font-serif);font-style:italic;font-weight:500;
+    color:#F2D3DA;letter-spacing:0;
+  }
+  .slide .kicker{margin-bottom:16px;color:rgba(255,255,255,.85)}
+  .slide .kicker::before{background:#fff}
+  .slide-sub{margin-top:14px;font-size:15px;line-height:1.65;color:rgba(255,255,255,.82);word-break:keep-all}
+  .slide-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .slide-actions .btn{padding:12px 24px;font-size:13.5px}
+
+  /* 컨트롤: 화살표 (이미지 위 글래스 스타일) */
+  .slider-arrow{
+    all:unset;cursor:pointer;position:absolute;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;line-height:1;
+    background:rgba(255,255,255,.14);color:#fff;
+    border:1px solid rgba(255,255,255,.38);
+    backdrop-filter:blur(4px);
+    transition:all .2s;z-index:5;
+  }
+  .slider-arrow:hover{background:var(--ruby);border-color:var(--ruby)}
+  .slider-arrow:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .arrow-prev{left:22px}
+  .arrow-next{right:22px}
+
+  /* 컨트롤: 도트 */
+  .slider-dots{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    display:flex;gap:10px;z-index:5;align-items:center;
+  }
+  .dot{
+    all:unset;cursor:pointer;width:8px;height:8px;border-radius:99px;
+    background:rgba(255,255,255,.4);transition:all .3s;
+  }
+  .dot.active{width:30px;background:#fff}
+  .dot:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+  @media (prefers-reduced-motion:reduce){
+    .slides{transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- section ---------- */
+  section{padding:100px 0}
+  .sec-head{max-width:640px;margin-bottom:56px}
+  .sec-head h2{
+    margin-top:18px;font-size:clamp(26px,3vw,36px);
+    line-height:1.35;font-weight:700;letter-spacing:-.01em;word-break:keep-all;
+  }
+  .sec-head p{margin-top:16px;color:var(--steel);word-break:keep-all}
+
+  /* ---------- about ---------- */
+  .about{border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .about-quote{
+    font-family:var(--font-serif);
+    font-size:clamp(24px,2.6vw,32px);line-height:1.45;color:var(--ink);
+  }
+  .about-quote .i18n-ko{font-family:var(--font-kr);font-weight:500}
+  .about-quote .i18n-en{font-style:italic;font-weight:500}
+  .about-quote strong{color:var(--ruby);font-weight:600}
+  .about-body p{color:var(--steel);word-break:keep-all}
+  .about-body p + p{margin-top:18px}
+  .about-stats{
+    margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+  }
+  .stat{padding:20px 16px 0 0}
+  .stat b{font-family:var(--font-en);font-size:26px;font-weight:700;display:block;letter-spacing:-.01em}
+  .stat span{font-size:12.5px;color:var(--steel)}
+
+  /* ---------- channels ---------- */
+  .channels{background:var(--ink);color:#EDEDEA}
+  .channels .eyebrow{color:var(--silver)}
+  .channels .eyebrow::before{background:var(--ruby)}
+  .channels .sec-head h2{color:#fff}
+  .channels .sec-head p{color:#9DA1A6}
+  .channel-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#33363B;border:1px solid #33363B}
+  .channel{background:var(--ink);padding:48px 44px;transition:background .25s}
+  .channel:hover{background:#212327}
+  .channel .tag{
+    font-family:var(--font-en);font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ruby);font-weight:600;
+  }
+  .channel h3{
+    margin-top:14px;font-family:var(--font-en);
+    font-size:26px;font-weight:700;color:#fff;letter-spacing:-.01em;
+  }
+  .channel h3 small{display:block;font-family:var(--font-kr);font-size:14px;font-weight:500;color:#9DA1A6;margin-top:6px;letter-spacing:0}
+  .channel p{margin-top:20px;font-size:15px;color:#B9BDC2;word-break:keep-all}
+  .channel .link{
+    margin-top:28px;display:inline-flex;align-items:center;gap:8px;
+    font-size:13.5px;font-weight:600;color:#fff;
+  }
+  .channel .link::after{content:"→";color:var(--ruby);transition:transform .2s}
+  .channel:hover .link::after{transform:translateX(4px)}
+
+  /* ---------- logistics ---------- */
+  .logistics{border-bottom:1px solid var(--line)}
+  .logi-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+  .logi-intro{color:var(--steel);font-size:16.5px;word-break:keep-all}
+  .logi-items{border-top:1px solid var(--ink)}
+  .logi-item{
+    display:grid;grid-template-columns:210px 1fr;gap:24px;align-items:baseline;
+    padding:22px 4px;border-bottom:1px solid var(--line);
+    transition:background .15s;
+  }
+  .logi-item:hover{background:#fff}
+  .logi-item b{font-family:var(--font-en);font-size:17px;font-weight:700;letter-spacing:.01em}
+  .logi-item b::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ruby);margin-left:10px;vertical-align:middle}
+  .logi-item span{font-size:14px;color:var(--steel);word-break:keep-all}
+
+  /* ---------- brands ---------- */
+  .brands{border-bottom:1px solid var(--line)}
+  .brand-intro{max-width:760px;margin-bottom:56px;color:var(--steel);word-break:keep-all;font-size:16.5px}
+  .brand-table{border-top:1px solid var(--ink)}
+  .brand-cat{
+    display:grid;grid-template-columns:200px 1fr;gap:32px;
+    padding:30px 4px;border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .cat-label b{
+    font-family:var(--font-en);font-size:15px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;display:block;
+  }
+  .cat-label i{
+    font-style:normal;font-family:var(--font-en);font-size:11px;
+    color:var(--ruby);font-weight:600;letter-spacing:.08em;
+  }
+  .cat-label small{display:block;font-size:12px;color:var(--steel);margin-top:2px}
+  .brand-chips{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:8px 24px;
+  }
+  .chip{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--font-en);font-size:14px;font-weight:600;letter-spacing:.01em;
+    padding:7px 4px;border-bottom:1px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  .chip:hover{color:var(--ruby);border-color:var(--ruby)}
+  .chip .flag{font-size:15px;line-height:1}
+  .brand-note{margin-top:22px;font-size:13px;color:var(--steel)}
+
+  /* ---------- newsroom ---------- */
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .news-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:2px;
+    padding:32px 28px;display:flex;flex-direction:column;gap:14px;
+    transition:border-color .2s, transform .2s;
+  }
+  .news-card:hover{border-color:var(--ruby);transform:translateY(-3px)}
+  .news-card .date{font-family:var(--font-en);font-size:11.5px;letter-spacing:.14em;color:var(--steel);text-transform:uppercase}
+  .news-card h4{font-size:17px;font-weight:700;line-height:1.5;word-break:keep-all}
+  .news-card p{font-size:14px;color:var(--steel);word-break:keep-all}
+  .news-more{margin-top:40px;text-align:center}
+
+  /* ---------- contact ---------- */
+  .contact{
+    background:linear-gradient(160deg,var(--ruby-deep),var(--ruby));
+    color:#fff;text-align:center;
+  }
+  .contact h2{font-size:clamp(28px,3.4vw,42px);font-weight:700;letter-spacing:-.01em;word-break:keep-all}
+  .contact .serif{font-family:var(--font-serif);font-style:italic;font-weight:500}
+  .contact p{margin:20px auto 0;max-width:560px;color:rgba(255,255,255,.85);word-break:keep-all}
+  .contact .btn{margin-top:38px;background:#fff;color:var(--ruby-deep)}
+  .contact .btn:hover{background:var(--paper)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#8B8F94;padding:56px 0 40px;font-size:13px}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .foot-brand{font-family:var(--font-en);color:#fff;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px}
+  .foot-links{display:flex;gap:26px}
+  .foot-links a:hover{color:#fff}
+  .foot-legal{margin-top:32px;padding-top:24px;border-top:1px solid #2B2D31;font-size:12px;line-height:1.9}
+
+  /* ---------- scroll fade-in ---------- */
+  .reveal{
+    opacity:0;transform:translateY(22px);
+    transition:opacity .7s cubic-bezier(.22,.61,.36,1),
+               transform .7s cubic-bezier(.22,.61,.36,1),
+               background .15s, border-color .2s;
+  }
+  .reveal.visible{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .about-grid,.channel-grid,.logi-grid{grid-template-columns:1fr}
+    .logi-grid{gap:36px}
+    .logi-item{grid-template-columns:1fr;row-gap:4px}
+    .slide{min-height:420px}
+    .slide-copy{padding:44px 0 76px;max-width:100%}
+    .slider-arrow{width:38px;height:38px}
+    .arrow-prev{left:10px}
+    .arrow-next{right:10px}
+    section{padding:72px 0}
+    .news-grid{grid-template-columns:1fr}
+    .brand-row{grid-template-columns:1.6fr 1fr;row-gap:6px}
+    .brand-row .cat{grid-column:1/-1}
+    .brand-row .desc{grid-column:1/-1}
+    .nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <!-- 로고 이미지 교체: images/logo.png 를 실제 로고 파일 경로로 바꾸세요 (svg/png 권장, 높이 자동 맞춤) -->
+    <a class="logo" href="#top">
+      <img class="logo-img" src="images/logo.png" alt="Rubi Company"
+           onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='inline-flex'">
+      <span class="logo-fallback" id="logo-fallback"><span class="logo-dot"></span>Rubi Company</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#about"><span class="i18n-ko">회사 소개</span><span class="i18n-en">About</span></a>
+      <a href="#channels"><span class="i18n-ko">채널</span><span class="i18n-en">Channels</span></a>
+      <a href="#brands"><span class="i18n-ko">브랜드</span><span class="i18n-en">Brands</span></a>
+      <a href="#newsroom"><span class="i18n-ko">뉴스룸</span><span class="i18n-en">Newsroom</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="btn-ko" class="active" onclick="setLang('ko')">KO</button>
+        <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a class="nav-cta" href="#contact"><span class="i18n-ko">파트너십 문의</span><span class="i18n-en">Partner With Us</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO SLIDER ================= -->
+<!--
+  슬라이드 배경 이미지 교체 방법:
+  각 .slide의 style 속성에서 url('images/hero-01.jpg') 부분을 실제 이미지 경로로 바꾸세요.
+  이미지가 없으면 뒤에 지정된 그라디언트가 대신 표시됩니다.
+-->
+<div class="slider" id="top" aria-roledescription="carousel" aria-label="Rubi Company highlights">
+  <div class="slides" id="slides">
+
+    <!-- Slide 1 : 브랜드 철학 -->
+    <section class="slide" aria-label="1 / 3"
+      style="background-image:url('images/hero-01.jpg'),linear-gradient(135deg,#33363E,#101114)">
+      <div class="wrap">
+        <div class="slide-copy">
+          <p class="eyebrow kicker">Premium Cycling &amp; Lifestyle Distribution</p>
+          <h1>The Pursuit<br>of <span class="serif">Aesthetics</span></h1>
+          <p class="slide-sub i18n-ko">해외 프리미엄 사이클링 &amp; 라이프스타일 브랜드를 발굴해 국내 시장에 공급하는 전문 수입유통 회사, 루비컴퍼니입니다.</p>
+          <p class="slide-sub i18n-en">Rubi Company discovers the world&rsquo;s premium cycling &amp; lifestyle brands and brings them to Korea.</p>
+          <div class="slide-actions">
+            <a class="btn btn-primary" href="#brands"><span class="i18n-ko">브랜드 포트폴리오</span><span class="i18n-en">Brand Portfolio</span></a>
+            <a class="btn btn-ghost-light" href="#contact">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2 : 루비 워크샵 -->
+    <section class="slide" aria-label="2 / 3"
+      style="background-image:url('images/hero-02.jpg'),linear-gradient(135deg,#3A3D44,#17181C)">
+      <div class="wrap">
+        <div class="slide-copy">
+          <p class="eyebrow kicker">Rubi Workshop · Retail &amp; Service</p>
+          <h1>Where riders meet<br><span class="serif">craftsmanship</span></h1>
+          <p class="slide-sub i18n-ko">제품 상담부터 전문 미케닉의 조립·정비까지, 프리미엄 브랜드를 직접 경험하는 공간.</p>
+          <p class="slide-sub i18n-en">From consultation to expert assembly and maintenance — experience premium brands first-hand.</p>
+          <div class="slide-actions">
+            <a class="btn btn-primary" href="#channels"><span class="i18n-ko">워크샵 알아보기</span><span class="i18n-en">Explore the Workshop</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3 : 루비 서플라이 -->
+    <section class="slide" aria-label="3 / 3"
+      style="background-image:url('images/hero-03.jpg'),linear-gradient(135deg,#6E1122,#9E1B32)">
+      <div class="wrap">
+        <div class="slide-copy">
+          <p class="eyebrow kicker">Rubi Supply · B2B Distribution</p>
+          <h1>Partners in<br><span class="serif">premium cycling</span></h1>
+          <p class="slide-sub i18n-ko">전국 파트너 스토어와 함께하는 딜러 전용 디스트리뷰션 채널.</p>
+          <p class="slide-sub i18n-en">Our dealer-only distribution channel, with verified partner stores nationwide.</p>
+          <div class="slide-actions">
+            <a class="btn btn-white" href="https://rubisupply.com" target="_blank" rel="noopener">rubisupply.com</a>
+            <a class="btn btn-ghost-light" href="#contact"><span class="i18n-ko">딜러 문의</span><span class="i18n-en">Become a Dealer</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <button class="slider-arrow arrow-prev" type="button" aria-label="이전 슬라이드" onclick="slidePrev()">←</button>
+  <button class="slider-arrow arrow-next" type="button" aria-label="다음 슬라이드" onclick="slideNext()">→</button>
+
+  <div class="slider-dots" id="dots" role="tablist" aria-label="슬라이드 선택">
+    <button class="dot active" type="button" role="tab" aria-label="슬라이드 1" onclick="slideGo(0)"></button>
+    <button class="dot" type="button" role="tab" aria-label="슬라이드 2" onclick="slideGo(1)"></button>
+    <button class="dot" type="button" role="tab" aria-label="슬라이드 3" onclick="slideGo(2)"></button>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <p class="eyebrow">About Rubi Company</p>
+    <div class="about-grid" style="margin-top:32px">
+      <p class="about-quote">
+        <span class="i18n-ko">빠르게 변화하는 해외 트렌드와 고객의 라이프스타일에 대한
+        <strong>견고한 이해</strong>를 바탕으로, 고객의 라이프스타일 확장에 기여합니다.</span>
+        <span class="i18n-en">Grounded in a <strong>solid understanding</strong> of rapidly
+        changing global trends and our customers&rsquo; lifestyles, we contribute to
+        expanding the way they ride and live.</span>
+      </p>
+      <div class="about-body">
+        <p class="i18n-ko">
+          루비컴퍼니는 &ldquo;The Pursuit of Aesthetics&rdquo;라는 이념 아래, 세계 각지의
+          프리미엄 사이클링 및 라이프스타일 브랜드를 발굴하여 국내 시장에
+          독점 공급하는 전문 수입유통 회사입니다.
+        </p>
+        <p class="i18n-ko">
+          단순한 유통을 넘어 브랜드의 철학과 스토리를 온전히 전달하는
+          로컬라이즈드 컨텐츠, 딜러 네트워크 운영, 사후 서비스까지 —
+          브랜드가 한국 시장에 뿌리내리는 전 과정을 함께합니다.
+        </p>
+        <p class="i18n-en">
+          Under the ideology of &ldquo;The Pursuit of Aesthetics,&rdquo; Rubi Company
+          specializes in discovering premium cycling and lifestyle brands worldwide
+          and supplying them exclusively to the Korean market.
+        </p>
+        <p class="i18n-en">
+          Beyond distribution, we support every step of a brand&rsquo;s journey in
+          Korea — localized content that carries each brand&rsquo;s philosophy and
+          story, a nationwide dealer network, and dedicated after-sales service.
+        </p>
+        <div class="about-stats">
+          <div class="stat"><b>35+</b><span class="i18n-ko">공식 수입 브랜드</span><span class="i18n-en">Official brands</span></div>
+          <div class="stat"><b>2</b><span class="i18n-ko">전문 채널 (워크샵 · 서플라이)</span><span class="i18n-en">Channels: Workshop &amp; Supply</span></div>
+          <div class="stat"><b>Seoul</b><span class="i18n-ko">기반 딜러 네트워크 전국 운영</span><span class="i18n-en">HQ with a nationwide dealer network</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHANNELS ================= -->
+<section class="channels" id="channels">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Our Channels</p>
+      <h2><span class="i18n-ko">고객과 파트너, 두 개의 채널로 만납니다</span><span class="i18n-en">Two channels, for riders and partners</span></h2>
+      <p><span class="i18n-ko">라이더를 위한 리테일 &amp; 워크샵, 그리고 전국 딜러를 위한 전용 디스트리뷰션 채널을 운영합니다.</span><span class="i18n-en">A retail &amp; workshop space for riders, and a dedicated distribution channel for dealers nationwide.</span></p>
+    </div>
+    <div class="channel-grid">
+      <article class="channel">
+        <p class="tag">Retail &amp; Service</p>
+        <h3>Rubi Workshop<small class="i18n-ko">루비 워크샵</small><small class="i18n-en">Retail &amp; workshop for riders</small></h3>
+        <p class="i18n-ko">
+          라이더가 프리미엄 브랜드를 직접 경험하는 공간입니다. 제품 상담과 판매는 물론,
+          전문 미케닉의 조립·정비 서비스를 통해 유쾌한 라이딩 경험을 완성합니다.
+        </p>
+        <p class="i18n-en">
+          Where riders experience premium brands first-hand. From consultation and
+          sales to expert assembly and maintenance, we complete a delightful
+          riding experience.
+        </p>
+        <a class="link" href="https://rubiworkshop.com" target="_blank" rel="noopener">rubiworkshop.com</a>
+      </article>
+      <article class="channel">
+        <p class="tag">B2B Distribution</p>
+        <h3>Rubi Supply<small class="i18n-ko">루비 서플라이</small><small class="i18n-en">Dealer-only distribution</small></h3>
+        <p class="i18n-ko">
+          프리미엄 사이클링 브랜드를 유통하는 딜러 전용 채널입니다. 전국의 파트너 스토어와 함께
+          검증된 판매·정비 이력을 기반으로 프리미엄 사이클링 경험을 확장합니다.
+        </p>
+        <p class="i18n-en">
+          A dealer-only channel distributing premium cycling brands. Together with
+          verified partner stores nationwide, we expand the premium cycling
+          experience across Korea.
+        </p>
+        <a class="link" href="https://rubisupply.com" target="_blank" rel="noopener">rubisupply.com</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOGISTICS ================= -->
+<section class="logistics" id="logistics">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Logistics &amp; Operations</p>
+      <h2><span class="i18n-ko">스피드를 위해 설계된 로지스틱스</span><span class="i18n-en">Logistics built for speed</span></h2>
+      <p><span class="i18n-ko">루비컴퍼니 세일즈 &amp; 디스트리뷰션의 경쟁력은 브랜드 뒤에 있는 인프라에서 나옵니다.</span><span class="i18n-en">Inside Rubi Company&rsquo;s sales &amp; distribution edge.</span></p>
+    </div>
+    <div class="logi-grid">
+      <p class="logi-intro i18n-ko">
+        다양한 제품군을 빠르고 정밀하게 처리하도록 자체 구축한 ERP와 창고관리 시스템(WMS),
+        그리고 주문이 24시간 이내에 고객과 파트너에게 도착하는 강남 물류 거점.
+        속도와 정확성, 신뢰는 부가 요소가 아니라 루비컴퍼니가 매일 일하는 방식 그 자체입니다.
+      </p>
+      <p class="logi-intro i18n-en">
+        What sets Rubi Company apart is the infrastructure behind our brands —
+        an in-house ERP and warehouse management system built to handle a wide
+        range of products with speed and precision, paired with a Gangnam-based
+        warehouse that gets orders to customers and partners within 24 hours.
+        Speed, accuracy, and reliability aren&rsquo;t an afterthought — they&rsquo;re
+        built into how we operate, every single day.
+      </p>
+      <div class="logi-items">
+        <div class="logi-item">
+          <b>In-house ERP · WMS</b>
+          <span><span class="i18n-ko">다양한 제품군을 빠르고 정밀하게 처리하는 자체 구축 시스템</span><span class="i18n-en">In-house systems built to handle a wide product range with speed and precision</span></span>
+        </div>
+        <div class="logi-item">
+          <b>Gangnam Hub</b>
+          <span><span class="i18n-ko">서울 강남의 자체 물류 거점에서 직접 출고</span><span class="i18n-en">Orders ship directly from our Gangnam-based warehouse</span></span>
+        </div>
+        <div class="logi-item">
+          <b>Within 24 Hours</b>
+          <span><span class="i18n-ko">고객과 딜러 파트너에게 24시간 이내 전달</span><span class="i18n-en">Delivered to customers and dealer partners within 24 hours</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRANDS ================= -->
+<section class="brands" id="brands">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Brand Portfolio</p>
+      <h2><span class="i18n-ko">사이클링 세계관을 완성하는 브랜드들</span><span class="i18n-en">Brands that complete our cycling worldview</span></h2>
+    </div>
+    <p class="brand-intro i18n-ko">
+      루비컴퍼니의 브랜드 포트폴리오는 루비컴퍼니가 추구하는 사이클링 세계관을 완성하는
+      의미있는 재료이자, 서울과 다른 도시의 사이클링 문화를 연결하는 중요한 매개입니다.
+      루비컴퍼니는 해외의 프리미엄 브랜드를 국내에 독점적으로 선보이고 있으며,
+      서울의 사이클링 문화를 세계에 소개하고 있습니다.
+    </p>
+    <p class="brand-intro i18n-en">
+      Rubi Company&rsquo;s brand portfolio is a meaningful component that completes
+      the cycling worldview we pursue, and an important bridge connecting the
+      cycling cultures of Seoul and other cities. We exclusively introduce premium
+      overseas brands to the domestic market, and showcase Seoul&rsquo;s cycling
+      culture to the world.
+    </p>
+
+    <div class="brand-table">
+      <div class="brand-cat">
+        <div class="cat-label">
+          <b>Bike <i>7</i></b>
+          <small>자전거</small>
+        </div>
+        <div class="brand-chips">
+        <span class="chip"><span class="flag">🇬🇧</span>Moulton Bicycles</span>
+        <span class="chip"><span class="flag">🇬🇧</span>Tsubasa Bicycles</span>
+        <span class="chip"><span class="flag">🇬🇧</span>Pashley</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Parlee Cycles</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Crust Bikes</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Bike Friday</span>
+        <span class="chip"><span class="flag">🇦🇺</span>Bastion Cycles</span>
+        </div>
+      </div>
+      <div class="brand-cat">
+        <div class="cat-label">
+          <b>Components <i>24</i></b>
+          <small>컴포넌트</small>
+        </div>
+        <div class="brand-chips">
+        <span class="chip"><span class="flag">🇩🇪</span>THM</span>
+        <span class="chip"><span class="flag">🇩🇪</span>Cybercycles</span>
+        <span class="chip"><span class="flag">🇩🇪</span>Schmolke</span>
+        <span class="chip"><span class="flag">🇩🇪</span>Carl Stahl</span>
+        <span class="chip"><span class="flag">🇯🇵</span>Gokiso</span>
+        <span class="chip"><span class="flag">🇯🇵</span>MKS</span>
+        <span class="chip"><span class="flag">🇯🇵</span>Honjo</span>
+        <span class="chip"><span class="flag">🇯🇵</span>Growtac</span>
+        <span class="chip"><span class="flag">🇯🇵</span>Crane Bell</span>
+        <span class="chip"><span class="flag">🇯🇵</span>Nitto</span>
+        <span class="chip"><span class="flag">🇹🇼</span>Andoza</span>
+        <span class="chip"><span class="flag">🇮🇹</span>Carbon-Ti</span>
+        <span class="chip"><span class="flag">🇮🇹</span>Extralite</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Spurcycle</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Paul Components</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Wolf Tooth Components</span>
+        <span class="chip"><span class="flag">🇺🇸</span>White Industries</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Chris King</span>
+        <span class="chip"><span class="flag">🇺🇸</span>King Cage</span>
+        <span class="chip"><span class="flag">🇺🇸</span>Velocity</span>
+        <span class="chip"><span class="flag">🇫🇷</span>Berthoud Cycles</span>
+        <span class="chip"><span class="flag">🇩🇰</span>Hulsroy</span>
+        <span class="chip"><span class="flag">🇰🇷</span>Arte di Mano</span>
+        <span class="chip"><span class="flag">🇧🇪</span>Sapim</span>
+        </div>
+      </div>
+      <div class="brand-cat">
+        <div class="cat-label">
+          <b>Fashion <i>1</i></b>
+          <small>패션</small>
+        </div>
+        <div class="brand-chips">
+        <span class="chip"><span class="flag">🇬🇧</span>QUOC</span>
+        </div>
+      </div>
+      <div class="brand-cat">
+        <div class="cat-label">
+          <b>Tires <i>1</i></b>
+          <small>타이어</small>
+        </div>
+        <div class="brand-chips">
+        <span class="chip"><span class="flag">🇺🇸</span>Ultradynamico</span>
+        </div>
+      </div>
+      <div class="brand-cat">
+        <div class="cat-label">
+          <b>Tools <i>1</i></b>
+          <small>툴</small>
+        </div>
+        <div class="brand-chips">
+        <span class="chip"><span class="flag">🇺🇸</span>Efficient Velo Tools</span>
+        </div>
+      </div>
+      <div class="brand-cat">
+        <div class="cat-label">
+          <b>Nutrition <i>1</i></b>
+          <small>뉴트리션</small>
+        </div>
+        <div class="brand-chips">
+        <span class="chip"><span class="flag">🇰🇷</span>Yohemite</span>
+        </div>
+      </div>
+    </div>
+    <p class="brand-note"><span class="i18n-ko">* 브랜드 라인업은 시즌에 따라 변동될 수 있습니다. 취급 스토어는 루비서플라이 스토어 찾기에서 확인하실 수 있습니다.</span><span class="i18n-en">* Brand lineup may change by season. Find authorized stores via the Rubi Supply store locator.</span></p>
+  </div>
+</section>
+
+<!-- ================= NEWSROOM ================= -->
+<section id="newsroom">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Newsroom</p>
+      <h2><span class="i18n-ko">사이클링 라이프스타일에 대한 다채로운 이야기</span><span class="i18n-en">Stories from the cycling lifestyle</span></h2>
+      <p><span class="i18n-ko">루비워크샵과 루비서플라이의 새로운 소식을 뉴스룸에서 만나보세요.</span><span class="i18n-en">The latest from Rubi Workshop and Rubi Supply.</span></p>
+    </div>
+    <div class="news-grid">
+      <article class="news-card">
+        <span class="date">Partnership</span>
+        <h4 class="i18n-ko">일본 페달 명가 MKS, 루비컴퍼니와 공식 파트너십 체결</h4>
+        <h4 class="i18n-en">MKS, Japan&rsquo;s master pedal maker, partners with Rubi Company</h4>
+        <p class="i18n-ko">Mikashima Industrial이 한국 시장 진출을 위해 루비컴퍼니와 브랜드 및 제품 공급 계약을 맺었습니다.</p>
+        <p class="i18n-en">Mikashima Industrial signed a brand and supply agreement with Rubi Company to enter the Korean market.</p>
+      </article>
+      <article class="news-card">
+        <span class="date">Launch</span>
+        <h4 class="i18n-ko">Crust Bikes, 국내 정식 데뷔</h4>
+        <h4 class="i18n-en">Crust Bikes makes its official Korean debut</h4>
+        <p class="i18n-ko">어드벤처 라이딩 문화를 대표하는 크러스트 바이크가 루비컴퍼니를 통해 국내에 소개됩니다.</p>
+        <p class="i18n-en">The adventure-riding icon arrives in Korea through Rubi Company.</p>
+      </article>
+      <article class="news-card">
+        <span class="date">Community</span>
+        <h4 class="i18n-ko">몰튼 코리아 클럽 런칭 &amp; QUOC 커뮤니티 라이드</h4>
+        <h4 class="i18n-en">Moulton Korea Club launch &amp; QUOC community ride</h4>
+        <p class="i18n-ko">브랜드를 사랑하는 라이더들과 함께하는 커뮤니티 프로그램이 시작되었습니다.</p>
+        <p class="i18n-en">Community programs kick off with riders who love the brands.</p>
+      </article>
+    </div>
+    <div class="news-more">
+      <a class="btn btn-ghost" href="http://rubi.kr/newsroom" target="_blank" rel="noopener"><span class="i18n-ko">뉴스룸 전체 보기</span><span class="i18n-en">View all news</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let&rsquo;s build a <span class="serif">partnership</span></h2>
+    <p class="i18n-ko">
+      루비컴퍼니는 해외 파트너 및 고객과의 소통 기회를 소중히 여깁니다.
+      제품, 서비스, 잠재적인 협력에 대한 문의가 있으시면 전담 팀이 도와드리겠습니다.
+      한국 사이클링 시장을 위한 성공적인 파트너십을 기대합니다.
+    </p>
+    <p class="i18n-en">
+      We value the opportunity to connect with our international partners and
+      clients. Whether you have inquiries about products, services, or potential
+      collaborations, our dedicated team is here to assist you. We look forward
+      to building a successful partnership for the Korean cycling market.
+    </p>
+    <a class="btn" href="mailto:info@rubi.kr"><span class="i18n-ko">문의 메일 보내기</span><span class="i18n-en">Send an inquiry</span></a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">Rubi Company</p>
+        <p style="margin-top:10px">The Pursuit of Aesthetics</p>
+      </div>
+      <nav class="foot-links" aria-label="푸터 메뉴">
+        <a href="#about"><span class="i18n-ko">회사 소개</span><span class="i18n-en">About</span></a>
+        <a href="#channels"><span class="i18n-ko">채널</span><span class="i18n-en">Channels</span></a>
+        <a href="#brands"><span class="i18n-ko">브랜드</span><span class="i18n-en">Brands</span></a>
+        <a href="#newsroom"><span class="i18n-ko">뉴스룸</span><span class="i18n-en">Newsroom</span></a>
+        <a href="#contact"><span class="i18n-ko">문의</span><span class="i18n-en">Contact</span></a>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <span class="i18n-ko">루비컴퍼니 Rubi Company · 서울특별시 (주소 입력) · 사업자등록번호 (번호 입력)</span><span class="i18n-en">Rubi Company · Seoul, South Korea (address) · Business Reg. No. (number)</span><br>
+      © 2026 Rubi Company. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ---------- 언어 토글 ---------- */
+  function setLang(lang){
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('html-root').setAttribute('lang', lang);
+  }
+
+  /* ---------- 히어로 슬라이더 ---------- */
+  (function(){
+    var track = document.getElementById('slides');
+    var dots  = document.getElementById('dots').querySelectorAll('.dot');
+    var slider = document.querySelector('.slider');
+    var total = dots.length;
+    var idx = 0;
+    var AUTOPLAY_MS = 6000;
+    var timer = null;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function render(){
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      dots.forEach(function(d, i){
+        d.classList.toggle('active', i === idx);
+        d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
+    }
+
+    function go(i){
+      idx = (i + total) % total;
+      render();
+      restart();
+    }
+
+    window.slideGo   = go;
+    window.slideNext = function(){ go(idx + 1); };
+    window.slidePrev = function(){ go(idx - 1); };
+
+    function restart(){
+      if (reduceMotion) return;               /* 모션 최소화 설정 시 자동재생 안 함 */
+      if (timer) clearInterval(timer);
+      timer = setInterval(function(){ go(idx + 1); }, AUTOPLAY_MS);
+    }
+
+    /* 마우스 올리면 일시정지 */
+    slider.addEventListener('mouseenter', function(){ if (timer) clearInterval(timer); });
+    slider.addEventListener('mouseleave', restart);
+
+    /* 키보드 좌우 화살표 */
+    slider.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowLeft')  window.slidePrev();
+      if (e.key === 'ArrowRight') window.slideNext();
+    });
+
+    /* 터치 스와이프 */
+    var startX = null;
+    slider.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+    slider.addEventListener('touchend', function(e){
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) (dx < 0 ? window.slideNext() : window.slidePrev());
+      startX = null;
+    }, {passive:true});
+
+    render();
+    restart();
+  })();
+
+  /* ---------- 스크롤 페이드인 ---------- */
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    var targets = document.querySelectorAll(
+      '.sec-head, .about-quote, .about-body, .channel, .brand-cat, .brand-intro, .news-card, .news-more, .brand-note, .logi-intro, .logi-item, .contact .wrap'
+    );
+    targets.forEach(function(el){ el.classList.add('reveal'); });
+
+    /* 그룹 내 순차 등장 (브랜드 행, 뉴스 카드, 채널) */
+    document.querySelectorAll('.brand-table, .news-grid, .channel-grid, .logi-items').forEach(function(group){
+      Array.prototype.forEach.call(group.children, function(child, i){
+        child.style.transitionDelay = Math.min(i * 55, 440) + 'ms';
+      });
+    });
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+
+    targets.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
