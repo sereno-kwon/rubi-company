@@ -45,10 +45,6 @@
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .container { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
 
-  /* ---------- 프로모 바 ---------- */
-  .promo { background: var(--surface); font-size: 13px; text-align: center; padding: 10px var(--gutter); }
-  .promo a { text-decoration: underline; text-underline-offset: 3px; margin-left: 6px; }
-
   /* ---------- 헤더 ---------- */
   header.site {
     position: sticky; top: 0; z-index: 50; background: var(--bg);
@@ -138,19 +134,6 @@
   h2 { font-size: clamp(30px, 3.6vw, 48px); font-weight: 300; line-height: 1.2; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
   .lead { font-size: 17px; color: var(--muted); max-width: 56ch; margin: 16px 0 0; }
 
-  /* 프로모션 카드 (Polestar offer 카드) */
-  .offers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .offer { background: var(--surface); display: flex; flex-direction: column; transition: background .2s, color .2s; min-height: 280px; }
-  .offer:hover { background: var(--fg); color: var(--bg); }
-  .offer:hover p, .offer:hover .tag { color: inherit; opacity: .75; }
-  .offer .body { padding: 32px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-  .offer h3 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 300; letter-spacing: -.01em; margin: 8px 0 0; }
-  .offer p { margin: 0; color: var(--muted); font-size: 15px; }
-  .offer .tag { font-size: 12px; letter-spacing: .08em; color: var(--fg); border: 1px solid var(--line); padding: 2px 10px; align-self: start; }
-  .offer .link { margin-top: auto; padding-top: 10px; align-self: start; border: 0; }
-  .offer:hover .link svg { transform: translateX(3px); }
-  @media (max-width: 760px) { .offers { grid-template-columns: 1fr; } }
-
   /* 퀵링크 (시승 예약 / 차량 주문 / 전시장 찾기) */
   .quick { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .quick a { display: flex; align-items: center; gap: 16px; padding: 28px 24px; font-size: 16px; font-weight: 400; transition: background .2s; }
@@ -181,13 +164,6 @@
   .channel:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
   @media (max-width: 860px) { .channels { grid-template-columns: 1fr; } .channel, .channel + .channel { padding: 24px 0 28px; border-left: 0; border-bottom: 1px solid var(--line); min-height: 0; } .channel .idx { margin-bottom: 20px; } }
 
-  /* 다크 피처 */
-  .feature { background: var(--dark); color: var(--on-dark); }
-  .feature .container { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; padding-block: clamp(72px, 10vw, 136px); }
-  .feature h2 { font-size: clamp(44px, 7vw, 104px); font-weight: 200; letter-spacing: -.035em; line-height: 1; }
-  .feature p { color: rgba(255,255,255,.72); margin: 0 0 28px; max-width: 40ch; }
-  @media (max-width: 860px) { .feature .container { grid-template-columns: 1fr; } }
-
   /* 브랜드: 텍스트 리스트 */
   .bikes { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--fg); }
   .bike { display: flex; justify-content: space-between; align-items: end; gap: 12px; padding: 28px 0; border-bottom: 1px solid var(--line); }
@@ -214,7 +190,7 @@
   @media (max-width: 420px) { .names { grid-template-columns: 1fr; } }
 
   /* 하단 링크 3종 (최신 소식 / 프로모션 / 뉴스레터) */
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .tile { background: var(--surface); padding: 32px 28px; min-height: 160px; display: flex; flex-direction: column; justify-content: space-between; transition: background .2s, color .2s; }
   .tile:hover { background: var(--fg); color: var(--bg); }
   .tile b { font-size: 20px; font-weight: 400; }
@@ -270,8 +246,6 @@
   <symbol id="i-pause" viewBox="0 0 16 16"><path d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="1.6"/></symbol>
   <symbol id="i-play" viewBox="0 0 16 16"><path d="M4 2.5l9 5.5-9 5.5z" fill="currentColor"/></symbol>
 </svg>
-
-<div class="promo"><span data-i18n="promo">QUOC 2027 슈즈 거래처 프리오더가 10월 31일 마감됩니다.</span><a href="#offers" data-i18n="promoLink">프리오더 안내 보기</a></div>
 
 <header class="site" id="header">
   <div class="container bar">
@@ -336,7 +310,7 @@
         <p class="eyebrow">Crust Bikes</p>
         <h1 data-i18n="h3t">크러스트 바이크</h1>
         <p class="sub" data-i18n="h3s">투어링과 비포장, 그리고 느린 하루를 위한 스틸 프레임. 크러스트 바이크 한국 공식 수입사.</p>
-        <div class="btns"><a class="btn solid" href="https://rubiworkshop.com" target="_blank" rel="noopener" data-i18n="learnMore">자세히 알아보기</a><a class="btn ghost" href="#offers" data-i18n="dealerPre">거래처 프리오더</a></div>
+        <div class="btns"><a class="btn solid" href="https://rubiworkshop.com" target="_blank" rel="noopener" data-i18n="learnMore">자세히 알아보기</a><a class="btn ghost" href="tel:15515320" data-i18n="consult">상담 예약하기</a></div>
       </div>
     </div>
     <div class="dots"><div class="container" id="dots"></div></div>
@@ -373,30 +347,6 @@
       <div class="reveal">
         <h2 data-i18n="lgT">속도를 위해 설계된 물류<br>루비컴퍼니의 판매와 유통 경쟁력</h2>
         <p data-i18n="lgP">루비컴퍼니를 다르게 만드는 것은 브랜드 뒤의 인프라입니다. 폭넓은 제품을 빠르고 정확하게 다루도록 직접 구축한 ERP와 창고관리시스템, 그리고 고객과 파트너에게 24시간 안에 주문을 전하는 강남 물류창고. 속도, 정확성, 신뢰는 나중에 덧붙인 것이 아니라 매일의 운영 방식 안에 담겨 있습니다.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 진행중인 프로모션 -->
-  <section class="sec tight" id="offers">
-    <div class="container">
-      <div class="offers">
-        <a class="offer reveal" href="https://rubisupply.com" target="_blank" rel="noopener">
-          <div class="body">
-            <span class="tag" data-i18n="tagDealer">거래처 프리오더</span>
-            <h3 data-i18n="o1t">QUOC 2027 슈즈</h3>
-            <p data-i18n="o1d">10월 31일 마감, 2월 입고. 선오더 거래처에 추가 마진 혜택을 드립니다.</p>
-            <span class="link"><span data-i18n="preView">프리오더 안내 보기</span><svg><use href="#i-arrow"/></svg></span>
-          </div>
-        </a>
-        <a class="offer reveal" href="https://rubisupply.com" target="_blank" rel="noopener">
-          <div class="body">
-            <span class="tag" data-i18n="tagDealer">거래처 프리오더</span>
-            <h3 data-i18n="o2t">크러스트 바이크 TW Order</h3>
-            <p data-i18n="o2d">대만 생산분 프레임셋을 선오더로 먼저 확보하세요.</p>
-            <span class="link"><span data-i18n="preView">프리오더 안내 보기</span><svg><use href="#i-arrow"/></svg></span>
-          </div>
-        </a>
       </div>
     </div>
   </section>
@@ -456,16 +406,6 @@
     </div>
   </section>
 
-  <!-- 풀블리드 피처 -->
-  <section class="feature on-dark">
-    <div class="container reveal">
-      <div><p class="kicker" style="color:rgba(255,255,255,.55)">Tsubasa Bicycles</p>
-      <h2 data-i18n="fT">츠바사 바이시클</h2></div>
-      <div><p data-i18n="fP">영국에서 온 새로운 이름. 루비컴퍼니가 한국 공식 수입사로 소개합니다.</p>
-      <div class="btns"><a class="btn solid" href="https://tsubasabicycles.co.kr" target="_blank" rel="noopener" data-i18n="goNow">바로가기</a></div></div>
-    </div>
-  </section>
-
   <!-- 브랜드 -->
   <section class="sec" id="brands">
     <div class="container">
@@ -483,7 +423,6 @@
   <section class="sec tight" style="padding-top:0">
     <div class="container tiles">
       <a class="tile reveal" href="https://instagram.com/rubi.workshop" target="_blank" rel="noopener"><div><b data-i18n="t1">최신 소식</b><br><span>@rubi.workshop</span></div><svg><use href="#i-arrow"/></svg></a>
-      <a class="tile reveal" href="#offers"><div><b data-i18n="t2">진행중인 프리오더</b><br><span data-i18n="t2s">거래처 전용</span></div><svg><use href="#i-arrow"/></svg></a>
       <a class="tile reveal" href="https://pf.kakao.com/_NFnBj/chat" target="_blank" rel="noopener"><div><b data-i18n="t3">거래처 등록 문의</b><br><span>KakaoTalk</span></div><svg><use href="#i-arrow"/></svg></a>
     </div>
   </section>
@@ -588,9 +527,8 @@
       spP: '루비서플라이는 프리미엄 사이클링 브랜드를 유통하는 루비컴퍼니의 딜러 전용 채널입니다. 다양한 컴포넌트와 장비 브랜드도 독점 공급합니다. 루비서플라이는 국내 딜러들과 함께 프리미엄 사이클링 경험을 넓혀 가며, 고객에게 즐거운 라이딩 경험을 전하기 위한 제품 개발에 집중합니다.',
       lgT: '속도를 위해 설계된 물류<br>루비컴퍼니의 판매와 유통 경쟁력',
       lgP: '루비컴퍼니를 다르게 만드는 것은 브랜드 뒤의 인프라입니다. 폭넓은 제품을 빠르고 정확하게 다루도록 직접 구축한 ERP와 창고관리시스템, 그리고 고객과 파트너에게 24시간 안에 주문을 전하는 강남 물류창고. 속도, 정확성, 신뢰는 나중에 덧붙인 것이 아니라 매일의 운영 방식 안에 담겨 있습니다.',
-      promo: 'QUOC 2027 슈즈 거래처 프리오더가 10월 31일 마감됩니다.', promoLink: '프리오더 안내 보기',
       nWorkshop: '루비워크샵', nSupply: '루비서플라이', nGarage: '루비개러지', nBrands: '브랜드', nMore: '더보기',
-      learnMore: '자세히 알아보기', consult: '상담 예약하기', dealerPre: '거래처 프리오더', goNow: '바로가기',
+      learnMore: '자세히 알아보기', consult: '상담 예약하기',
       mWorkshopD: '반포에 위치한 사이클링 아뜰리에. 쇼룸과 커스텀 빌드.', mCustom: '커스텀 빌드 상담', mBook: '쇼룸 방문 예약', mFind: '쇼룸 찾기',
       mSupplyD: '사이클링 디스트리뷰션. 전국 200곳의 리테일샵과 함께.', mPreorder: '진행중인 프리오더', mDealer: '거래처 문의', mAllBrands: '전체 브랜드 보기',
       mGarageD: '루비워크샵의 조금 다른 공간. 합리적인 발견.', mStore: '스마트스토어 바로가기',
@@ -600,18 +538,14 @@
       h1t: '몰튼 바이시클', h1s: '작은 바퀴, 풀 서스펜션, 분리형 스페이스프레임. 영국 브래드포드 온 에이번에서 만드는 몰튼을 한국 공식 수입사가 소개합니다.',
       h2t: '바스티온 사이클', h2s: '3D 프린팅 티타늄 러그와 카본 튜브. 호주 멜버른에서 라이더 한 사람을 위해 설계하는 커스텀 로드바이크.',
       h3t: '크러스트 바이크', h3s: '투어링과 비포장, 그리고 느린 하루를 위한 스틸 프레임. 크러스트 바이크 한국 공식 수입사.',
-      tagDealer: '거래처 프리오더', preView: '프리오더 안내 보기',
-      o1t: 'QUOC 2027 슈즈', o1d: '10월 31일 마감, 2월 입고. 선오더 거래처에 추가 마진 혜택을 드립니다.',
-      o2t: '크러스트 바이크 TW Order', o2d: '대만 생산분 프레임셋을 선오더로 먼저 확보하세요.',
       q1: '쇼룸 방문 예약', q2: '거래처 문의', q3: '쇼룸 찾기',
       aK: 'About', aT: '유행보다 오래 남는 것을 고릅니다.',
       aP: '루비컴퍼니는 2015년 서울 반포에서 시작한 자전거 회사입니다. 설계의 이유가 분명하고, 수십 년을 버틴 구조와 재료, 그리고 고쳐 쓸 수 있는 부품. 들여오는 브랜드도, 조립하는 자전거도, 거래처에 공급하는 물건도 같은 기준으로 봅니다.',
       s1: '반포에서 시작', s2: '공식 디스트리뷰션 브랜드', s3: '함께하는 리테일샵', aMore: '루비컴퍼니의 채널 보기',
       cT: '수입에서 조립, 유통까지 한 회사 안에서.',
-      fT: '츠바사 바이시클', fP: '영국에서 온 새로운 이름. 루비컴퍼니가 한국 공식 수입사로 소개합니다.',
       bT: '50개 브랜드의 공식 디스트리뷰터', bL: '루비서플라이를 통해 국내에 소개하고 있는 브랜드들입니다.', brMore: '루비서플라이에서 전체 브랜드 보기',
       importer: '한국 공식 수입사', dist: '공식 디스트리뷰터', compT: '컴포넌트 &amp; 액세서리',
-      t1: '최신 소식', t2: '진행중인 프리오더', t2s: '거래처 전용', t3: '거래처 등록 문의',
+      t1: '최신 소식', t3: '거래처 등록 문의',
       stT: '루비워크샵의 새 소식을 먼저 받아 보세요', stB: '인스타그램 팔로우',
       ctT: '반포 쇼룸에서 만나요.', ctL: '자전거는 직접 보고 타 봐야 합니다. 방문 전에 전화로 예약해 주시면 천천히 안내해 드립니다.', ctMap: '지도에서 보기', ctCall: '전화 예약',
       cAddr: '주소', cAddrV: '서울특별시 서초구 신반포로 320, 1층 (반포동, 루비빌딩)', cHours: '영업시간', cHoursV: '화요일부터 토요일, 11시부터 19시', cTel: '전화', cB2b: '거래처', cMail: '메일',
@@ -626,9 +560,8 @@
       spP: 'Rubi Supply is a dealer-only channel of Rubi Company that distributes premium cycling brands. Rubi Supply also exclusively supplies a range of component and equipment brands. Rubi Supply expands its premium cycling experience with domestic dealers and focuses on product development to provide customers with a pleasant riding experience.',
       lgT: 'Logistics Built for Speed:<br>Inside Rubi Company\'s Sales &amp; Distribution Edge',
       lgP: 'What sets Rubi Company apart is the infrastructure behind our brands: an in-house ERP system and warehouse management system built to handle a wide range of products with speed and precision, paired with a Gangnam-based warehouse that gets orders to customers and partners within 24 hours. Speed, accuracy, and reliability aren\'t an afterthought; they\'re built into how we operate, every single day.',
-      promo: 'Dealer pre-orders for QUOC 2027 shoes close on October 31.', promoLink: 'View pre-order details',
       nWorkshop: 'Rubi Workshop', nSupply: 'Rubi Supply', nGarage: 'Rubi Garage', nBrands: 'Brands', nMore: 'More',
-      learnMore: 'Learn more', consult: 'Book a consultation', dealerPre: 'Dealer pre-order', goNow: 'Visit',
+      learnMore: 'Learn more', consult: 'Book a consultation',
       mWorkshopD: 'A cycling atelier in Banpo, Seoul. Showroom and custom builds.', mCustom: 'Custom build consultation', mBook: 'Book a showroom visit', mFind: 'Find the showroom',
       mSupplyD: 'Cycling distribution. Alongside 200 retail shops across Korea.', mPreorder: 'Current pre-orders', mDealer: 'Dealer enquiries', mAllBrands: 'See all brands',
       mGarageD: 'A slightly different corner of Rubi Workshop. Sensible finds.', mStore: 'Visit the store',
@@ -638,18 +571,14 @@
       h1t: 'Moulton Bicycles', h1s: 'Small wheels, full suspension, a separable space frame. Made in Bradford on Avon, England, and brought to Korea by its official importer.',
       h2t: 'Bastion Cycles', h2s: '3D-printed titanium lugs and carbon tubes. Custom road bikes designed in Melbourne for one rider at a time.',
       h3t: 'Crust Bikes', h3s: 'Steel frames for touring, dirt roads and slow days. Official importer of Crust Bikes in Korea.',
-      tagDealer: 'Dealer pre-order', preView: 'View pre-order details',
-      o1t: 'QUOC 2027 Shoes', o1d: 'Closes October 31, arriving in February. Extra margin for dealers who order early.',
-      o2t: 'Crust Bikes TW Order', o2d: 'Secure Taiwan-made framesets early with a pre-order.',
       q1: 'Book a showroom visit', q2: 'Dealer enquiries', q3: 'Find the showroom',
       aK: 'About', aT: 'We choose what outlasts fashion.',
       aP: 'Rubi Company is a bicycle company founded in Banpo, Seoul, in 2015. Designs with a clear reason, structures and materials that have held up for decades, and parts that can be repaired. The brands we import, the bicycles we build and the goods we supply are all judged by the same standard.',
       s1: 'Founded in Banpo', s2: 'Brands distributed', s3: 'Retail partners', aMore: 'See our channels',
       cT: 'Import, assembly and distribution, within one company.',
-      fT: 'Tsubasa Bicycles', fP: 'A new name from the UK, introduced to Korea by Rubi Company as official importer.',
       bT: 'Official distributor for 50 brands', bL: 'The brands we introduce to Korea through Rubi Supply.', brMore: 'See all brands at Rubi Supply',
       importer: 'Official Korean importer', dist: 'Official distributor', compT: 'Components &amp; Accessories',
-      t1: 'Latest news', t2: 'Current pre-orders', t2s: 'For dealers', t3: 'Become a dealer',
+      t1: 'Latest news', t3: 'Become a dealer',
       stT: 'Be the first to hear from Rubi Workshop', stB: 'Follow on Instagram',
       ctT: 'Meet us at the Banpo showroom.', ctL: 'A bicycle has to be seen and ridden. Call ahead to book and we will take our time with you.', ctMap: 'View on map', ctCall: 'Call to book',
       cAddr: 'Address', cAddrV: '1F, 320 Sinbanpo-ro, Seocho-gu, Seoul (Rubi Building, Banpo-dong)', cHours: 'Hours', cHoursV: 'Tuesday to Saturday, 11:00 to 19:00', cTel: 'Phone', cB2b: 'Dealers', cMail: 'Mail',
@@ -664,9 +593,8 @@
       spP: 'Rubi Supplyは、プレミアムなサイクリングブランドを流通するRubi Companyのディーラー専用チャネルです。さまざまなコンポーネントや機材ブランドも独占的に供給しています。国内のディーラーとともにプレミアムなサイクリング体験を広げ、お客様に心地よいライディング体験を届けるための製品開発に注力しています。',
       lgT: 'スピードのために築かれた物流<br>Rubi Companyの販売と流通の強み',
       lgP: 'Rubi Companyを際立たせているのは、ブランドの背後にあるインフラです。幅広い製品をスピーディーかつ正確に扱うために自社で構築したERPと倉庫管理システム、そしてお客様とパートナーに24時間以内に注文を届ける江南の倉庫。スピード、正確さ、信頼性は後付けではなく、毎日の運営そのものに組み込まれています。',
-      promo: 'QUOC 2027シューズの取引先プレオーダーは10月31日締切です。', promoLink: 'プレオーダー案内を見る',
       nWorkshop: 'Rubi Workshop', nSupply: 'Rubi Supply', nGarage: 'Rubi Garage', nBrands: 'ブランド', nMore: 'その他',
-      learnMore: '詳しく見る', consult: '相談を予約する', dealerPre: '取引先プレオーダー', goNow: 'サイトへ',
+      learnMore: '詳しく見る', consult: '相談を予約する',
       mWorkshopD: 'ソウル・盤浦にあるサイクリングアトリエ。ショールームとカスタムビルド。', mCustom: 'カスタムビルドの相談', mBook: 'ショールーム来店予約', mFind: 'ショールームを探す',
       mSupplyD: 'サイクリングのディストリビューション。全国200のリテールショップとともに。', mPreorder: '受付中のプレオーダー', mDealer: '取引先のお問い合わせ', mAllBrands: '全ブランドを見る',
       mGarageD: 'Rubi Workshopの少し違う空間。合理的な発見。', mStore: 'ストアへ',
@@ -676,18 +604,14 @@
       h1t: 'Moulton Bicycles', h1s: '小径ホイール、フルサスペンション、分割式スペースフレーム。英国ブラッドフォード・オン・エイヴォンで作られるMoultonを、韓国正規輸入元がご紹介します。',
       h2t: 'Bastion Cycles', h2s: '3Dプリントのチタンラグとカーボンチューブ。メルボルンで一人のライダーのために設計されるカスタムロードバイク。',
       h3t: 'Crust Bikes', h3s: 'ツーリングと未舗装路、そしてゆっくりした一日のためのスチールフレーム。Crust Bikes韓国正規輸入元。',
-      tagDealer: '取引先プレオーダー', preView: 'プレオーダー案内を見る',
-      o1t: 'QUOC 2027 シューズ', o1d: '10月31日締切、2月入荷。早期注文の取引先には追加マージンの特典があります。',
-      o2t: 'Crust Bikes TW Order', o2d: '台湾生産のフレームセットをプレオーダーで先に確保できます。',
       q1: 'ショールーム来店予約', q2: '取引先のお問い合わせ', q3: 'ショールームを探す',
       aK: 'About', aT: '流行より長く残るものを選びます。',
       aP: 'Rubi Companyは2015年、ソウル・盤浦で始まった自転車の会社です。設計の理由が明確で、数十年を耐えてきた構造と素材、そして直して使える部品。仕入れるブランドも、組み立てる自転車も、取引先に供給する品も、同じ基準で見ています。',
       s1: '盤浦で創業', s2: '正規取扱ブランド', s3: 'リテールパートナー', aMore: 'チャネルを見る',
       cT: '輸入から組み立て、流通まで、一つの会社の中で。',
-      fT: 'Tsubasa Bicycles', fP: '英国からの新しい名前。Rubi Companyが韓国正規輸入元としてご紹介します。',
       bT: '50ブランドの正規ディストリビューター', bL: 'Rubi Supplyを通じて韓国に紹介しているブランドです。', brMore: 'Rubi Supplyで全ブランドを見る',
       importer: '韓国正規輸入元', dist: '正規ディストリビューター', compT: 'コンポーネント &amp; アクセサリー',
-      t1: '最新情報', t2: '受付中のプレオーダー', t2s: '取引先専用', t3: '取引先登録のお問い合わせ',
+      t1: '最新情報', t3: '取引先登録のお問い合わせ',
       stT: 'Rubi Workshopの最新情報をいち早く', stB: 'Instagramをフォロー',
       ctT: '盤浦のショールームでお待ちしています。', ctL: '自転車は実際に見て、乗ってみるものです。ご来店前にお電話でご予約いただければ、ゆっくりご案内します。', ctMap: '地図で見る', ctCall: '電話で予約',
       cAddr: '住所', cAddrV: 'ソウル特別市 瑞草区 新盤浦路320 1階（盤浦洞、Rubiビル）', cHours: '営業時間', cHoursV: '火曜日から土曜日、11時から19時', cTel: '電話', cB2b: '取引先', cMail: 'メール',
