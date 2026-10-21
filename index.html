@@ -2,6 +2,14 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<!-- Google Analytics 4 (rubi.kr 웹 스트림) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=__GA_ID__"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '__GA_ID__');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>루비컴퍼니 | 프리미엄 사이클링 브랜드 수입, 유통, 리테일</title>
 <meta name="description" content="루비컴퍼니. 서울 반포의 프리미엄 사이클링 브랜드 수입, 유통, 리테일. 몰튼, 크러스트 바이크 한국 공식 디스트리뷰터. 바스티온, 츠바사 한국 공식 수입사.">
@@ -717,7 +725,16 @@
     try { saved = localStorage.getItem('rubi-lang'); } catch (e) {}
     const nav = (navigator.language || 'ko').slice(0, 2);
     applyLang(saved || (I18N[nav] ? nav : 'ko'));
-    document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+    /* GA4: 방문자가 보는 언어를 사용자 속성으로, 직접 바꾼 언어는 이벤트로 기록 */
+    if (typeof gtag === 'function') gtag('set', 'user_properties', { site_language: LANG });
+    document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => {
+      const from = LANG;
+      applyLang(b.dataset.lang);
+      if (typeof gtag === 'function' && from !== LANG) {
+        gtag('set', 'user_properties', { site_language: LANG });
+        gtag('event', 'select_language', { language_from: from, language_to: LANG });
+      }
+    }));
   })();
 
   /* 헤더, 드로어, 현재 섹션 표시 */
